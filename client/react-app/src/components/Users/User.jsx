@@ -24,8 +24,10 @@ export const User = props => {
 				<h1>loading...</h1>
 			) : (
 				<div>
-					<h1>Username: {data.user.username}</h1>
-					<h1>ID: {data.user._id}</h1>
+					<h2>Username: {data.user.username}</h2>
+					<h3>ID: {data.user._id}</h3>
+					<h3>Account created: {data.user.createdAt}</h3>
+					<h3>Last updated: {data.user.updatedAt}</h3>
 				</div>
 			)}
 		</div>

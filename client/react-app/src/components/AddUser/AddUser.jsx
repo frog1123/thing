@@ -9,13 +9,11 @@ export const AddUser = () => {
 				'Content-Type': 'application/json'
 			}
 		});
-
-		console.log(document.getElementById('new-user-input').value);
 		return res.json();
 	};
 	return (
 		<div className='add-user-container'>
-			<input id='new-user-input'></input>
+			<input id='new-user-input' placeholder='username'></input>
 			<button onClick={addUser}>
 				<h2>ADD</h2>
 			</button>
