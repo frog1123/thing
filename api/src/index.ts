@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
-var cors = require('cors');
+const Joi = require('joi');
+const cors = require('cors');
 require('dotenv').config();
 
 import User from './schemas/user';
@@ -31,6 +32,15 @@ app.get('/users/:id', async (req: Request, res: Response) => {
 	res.send(user);
 });
 
+app.post('/users', async (req: Request, res: Response) => {
+	const { error } = validateUsername(req.body);
+	console.log(req.body);
+
+	if (error) return res.status(400).send(error.details[0].message); // 400 Bad request
+
+	await generateNewUser(req.body.username);
+});
+
 const generateNewUser = async (username: string) => {
 	try {
 		const user = await User.create({
@@ -46,3 +56,11 @@ const deleteAllUsers = async () => {
 	await User.deleteMany({});
 	console.log('deleted all users');
 };
+
+function validateUsername(username: string) {
+	const schema = Joi.object({
+		username: Joi.string().min(3).required()
+	});
+
+	return schema.validate(username);
+}
