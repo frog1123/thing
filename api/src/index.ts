@@ -2,12 +2,14 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import User from './schemas/user';
 
+require('dotenv').config();
+
 mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.4.2', () => {
 	console.log('Connect to MongoDB'), (err: string) => console.log(err);
 });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.API_PORT || 3001;
 
 app.use(express.json());
 app.listen(PORT, () => console.log(`API listening on port ${PORT}`));

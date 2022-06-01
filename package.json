@@ -4,10 +4,16 @@
 	"description": "",
 	"main": "",
 	"scripts": {
-		"watch": "cd api && tsc -w",
-		"api-dev": "nodemon ./api/src/index.ts"
+		"watch": "cd api & tsc -w",
+		"start-dev": "concurrently \"npm run watch\" \"npm run api-dev\" \"npm run client-dev\"",
+		"api-dev": "nodemon ./api/src/index.ts",
+		"client-dev": "cd ./client/react-app && npm start"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^7.2.1",
+		"dotenv": "^16.0.1"
+	}
 }
