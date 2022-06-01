@@ -2,21 +2,12 @@
 	"name": "strillix-project",
 	"version": "1.0.0",
 	"description": "",
-	"main": "dist/index.js",
+	"main": "",
 	"scripts": {
-		"watch": "tsc -w",
-		"api-dev": "nodemon src/api/index.ts",
-		"start": "node dist/index.js"
+		"watch": "cd api && tsc -w",
+		"api-dev": "nodemon ./api/src/index.ts"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"express": "^4.18.1",
-		"mongoose": "^6.3.5"
-	},
-	"devDependencies": {
-		"@types/express": "^4.17.13",
-		"@types/node": "^17.0.38"
-	}
+	"license": "ISC"
 }

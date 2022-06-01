@@ -17,18 +17,29 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.get('/users', async (req: Request, res: Response) => {
-	const user = await User.where();
+	const users = await User.where();
+
+	res.send(users);
+});
+
+app.get('/users/:id', async (req: Request, res: Response) => {
+	const user = await User.find({ _id: req.params.id });
 
 	res.send(user);
 });
 
-const generateNewUser = async () => {
+const generateNewUser = async (username: string) => {
 	try {
 		const user = await User.create({
-			name: 'Joe'
+			username: username
 		});
 		console.log(user);
 	} catch (err) {
 		console.log(err);
 	}
+};
+
+const deleteAllUsers = async () => {
+	await User.deleteMany({});
+	console.log('deleted all users');
 };
