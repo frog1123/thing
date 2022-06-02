@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import './Users.css';
 
@@ -11,10 +12,7 @@ export const User = props => {
 			const data = await response.json();
 
 			setData({ user: data[0], loading: false });
-
-			console.log(data);
 		}
-
 		fetchData();
 	}, []);
 

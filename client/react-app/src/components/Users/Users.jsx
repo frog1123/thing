@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { User } from './User';
 
@@ -11,10 +12,7 @@ export const Users = () => {
 			const data = await response.json();
 
 			setData({ users: data, loading: false });
-
-			console.log(data);
 		}
-
 		fetchData();
 	}, []);
 
@@ -25,7 +23,7 @@ export const Users = () => {
 			) : (
 				<div className='users-container-loaded'>
 					{data.users.map((value, index) => (
-						<User userId={data.users[index]._id} /> // gets lowest id
+						<User userId={data.users[index]._id} key={index} /> // gets lowest id
 					))}
 				</div>
 			)}

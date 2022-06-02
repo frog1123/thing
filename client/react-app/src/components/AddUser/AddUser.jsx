@@ -1,3 +1,4 @@
+import React from 'react';
 import './AddUser.css';
 
 export const AddUser = () => {
