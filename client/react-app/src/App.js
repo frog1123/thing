@@ -1,16 +1,15 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from '../node_modules/react-router-dom';
 
-import { User } from './components/Users/User';
-import { Users } from './components/Users/Users';
-import { AddUser } from './components/AddUser/AddUser';
+import { default as Users } from './Users';
 
 function App() {
 	return (
-		<div>
-			<h1 className='header-txt'>Hello, world</h1>
-			<AddUser />
-			<Users />
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path='/users' element={<Users />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
